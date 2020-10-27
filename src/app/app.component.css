@@ -1,0 +1,7 @@
+div > h1 {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1rem;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}

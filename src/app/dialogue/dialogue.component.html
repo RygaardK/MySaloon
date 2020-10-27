@@ -1,27 +1,73 @@
 <app-user></app-user>
+
+<p *ngIf="isLoggedIn; else elseHelloBlock" >
+    Hello again, {{ name }}! The usual?
+</p>
+<ng-template  #elseHelloBlock>
+    <p>
+        Howdy, stranger. Haven't seen your face around here before. What's your name?
+    </p>
+</ng-template>
+
 <app-theusual></app-theusual>
 <app-selectbeverage></app-selectbeverage>
-<button [disabled]="isDisabled">Test button</button>
-<p>
 
+<!-- <button [disabled]="isDisabled">Test button</button> -->
+
+<p>
     User story: new visitor
     Browser loads web page for the first time.
+</p>
+
+<p>
     App: Howdy, stranger. Haven't seen your face around here before. What's your name?
+</p>
+
+<p>
+
     User: "enters name "Clive Westforest">"
-    App: Alright Mr. Westforest, what can I do you for?
-    User: "selects a beverage>
-    App: One "chosen beverage>, coming right up!
+</p> 
     
+<p>
+    App: Alright Mr. Westforest, what can I do you for?
+</p>
+<p>
+    User: "selects a beverage>
+</p>
+
+<p>
+    App: One "chosen beverage>, coming right up!
+</p>
+
+<p>
     User story: returning visitor
     Browser loads web page (not the first time)
+</p>
+
+<p>
     App: Hello again, Mr. Westforest! The usual?
     App presents a new button: "The usual". The user can still select another beverage from the menu.
+</p>
+
+<p>
     User: "selects the usual or another beverage>
-    App: One "chosen beverage>, coming right up!
+</p>
     
+<p>
+    App: One "chosen beverage>, coming right up!
+</p>
+    
+<p>
     User story: right to be forgotten
     Available at all times, to all users
     A button is displayed on the page that the visitor can click on to clear his/her information.
+</p>
+
+<p>
     User: "I was never here"
+</p>
+    
+<p>
     App: Got it. Who are you again?
 </p>
+
