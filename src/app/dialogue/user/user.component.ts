@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserstorageinfoService } from '../../userstorageinfo.service';
 
 @Component({
   selector: 'app-user',
@@ -7,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-
-  constructor() { }
+  public name = {}
+  constructor(private _UserstorageinfoService: UserstorageinfoService ) { }
 
   ngOnInit(): void {
   }
   
   logName(fname, lname) {
-    console.log(fname, lname)
+    this._UserstorageinfoService.setName(fname, lname);
   }
+ 
   // function userName(fname,lname) {
   //   default: "Howdy, stranger. Haven't seen your face around here before. What's your name?"
   //   return "Alright " + lname + ", what can I do you for?"
   // }
 }
-  

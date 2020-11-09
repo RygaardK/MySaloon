@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UserinfoService {
+export class UserstorageinfoService {
 
   constructor() { }
   
-  setName(fname, lname) {
-    console.log(fname, lname)
-    localStorage.setItem(name)
+  setName() {
+
   }
   getName(){
     let name = window.localStorage;
@@ -26,7 +25,7 @@ export class UserinfoService {
   }
 
   setDrink() {
-  
+
   }
   getDrink(){
     return [
@@ -38,7 +37,7 @@ export class UserinfoService {
     ];
   }
   changeDrink(){
-
+    
   }
 
 }

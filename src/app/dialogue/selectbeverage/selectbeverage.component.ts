@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserstorageinfoService } from '../../userstorageinfo.service';
 
 @Component({
   selector: 'app-selectbeverage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectbeverageComponent implements OnInit {
 
-  constructor() { }
+  public drinks = [];
+
+  constructor(private _UserstorageinfoService: UserstorageinfoService ) { }
 
   ngOnInit(): void {
+    this.drinks = this._UserstorageinfoService.getDrink();
   }
 
 }

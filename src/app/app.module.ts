@@ -7,8 +7,7 @@ import { DialogueComponent } from './dialogue/dialogue.component';
 import { SelectbeverageComponent } from './dialogue/selectbeverage/selectbeverage.component';
 import { TheusualComponent } from './dialogue/theusual/theusual.component';
 import { UserComponent } from './dialogue/user/user.component';
-
-import { UserinfoService } from './userinfo.service';
+import { UserstorageinfoService } from './userstorageinfo.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { UserinfoService } from './userinfo.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [UserinfoService],
+  providers: [UserstorageinfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
