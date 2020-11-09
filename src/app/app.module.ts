@@ -8,6 +8,8 @@ import { SelectbeverageComponent } from './dialogue/selectbeverage/selectbeverag
 import { TheusualComponent } from './dialogue/theusual/theusual.component';
 import { UserComponent } from './dialogue/user/user.component';
 
+import { UserinfoService } from './userinfo.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { UserComponent } from './dialogue/user/user.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserinfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
