@@ -1,0 +1,26 @@
+.container {
+    padding: 1rem;
+    display: flex;
+    width: 95vw;
+    height: 20vh;
+}
+
+.container .helloDiv {
+    padding: 1rem;
+    width: 70vw;
+    
+}
+
+.helloDiv p {
+    text-align: center;
+}
+
+.helloDiv button {
+    margin: 1rem 1rem 1rem 0rem
+}
+
+.container .clearDiv {
+    padding: 1rem;
+    width: 30vw;
+    
+}

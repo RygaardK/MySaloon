@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { SelectbeverageComponent } from './dialogue/selectbeverage/selectbeverage.component';
 import { TheusualComponent } from './dialogue/theusual/theusual.component';
-import { UserComponent } from './dialogue/user/user.component';
 import { UserstorageinfoService } from './userstorageinfo.service';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { UserstorageinfoService } from './userstorageinfo.service';
     DialogueComponent,
     SelectbeverageComponent,
     TheusualComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,

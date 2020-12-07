@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { UserstorageinfoService } from '../../userstorageinfo.service';
 
 @Component({
   selector: 'app-theusual',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TheusualComponent implements OnInit {
 
-  constructor() { }
+  public sameDrink = "";
+  public name = "";
+  @Input() thedrink: string;
+  @Output() drinkaDrink = new EventEmitter<string>();
+
+  constructor(private _UserstorageinfoService: UserstorageinfoService ) { }
+
+  sameSame() {
+    this.drinkaDrink.emit(this.sameDrink);
+  }
 
   ngOnInit(): void {
+    this.sameDrink = this._UserstorageinfoService.checkDrink();
+    //console.log(this.sameDrink)
+    this.name = this._UserstorageinfoService.checkName();
+    //console.log(this.name)
   }
 
 }

@@ -1,73 +1,59 @@
-<app-user></app-user>
+<div class="container">
+    <div class="helloDiv">
+        <p *ngIf=' name !== "null null"; then thenBlock else HelloBlock'>
+            Hello again, {{ name }} The usual?
+        </p>
+        
+        <ng-template #thenBlock>
+            <p>
+                Hello again, {{ name }} The usual?
+            </p>
+            <div id="sameDrink" class="selectDrink">
+                <app-theusual (drinkaDrink)="whatToDrink($event)" [thedrink]="myDrink"></app-theusual>
+            </div>
+        </ng-template>
 
-<p *ngIf="isLoggedIn; else elseHelloBlock" >
-    Hello again, {{ name }}! The usual?
-</p>
-<ng-template  #elseHelloBlock>
-    <p>
-        Howdy, stranger. Haven't seen your face around here before. What's your name?
-    </p>
-</ng-template>
+        <ng-template  #HelloBlock>
+            
+            <p>
+                Howdy, stranger. Haven't seen your face around here before. What's your name?
+            </p>
 
-<app-theusual></app-theusual>
-<app-selectbeverage></app-selectbeverage>
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="fname"></label>
+                        <input #fname name="fname"  type="text" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname"></label>
+                        <input #lname name="lname"  type="text" placeholder="Last name">
+                    </div>   
+                </form> 
+            </div>
+        
+        <button (click)="logName(fname.value, lname.value)" > Enter name!</button><br><br>
+        
+        </ng-template>
+        <p *ngIf=' myDrink !== ""'>
+            One {{ myDrink }}, coming right up!
+        </p>
+    </div>
 
-<!-- <button [disabled]="isDisabled">Test button</button> -->
+    <div class="clearDiv"  *ngIf='name !== "null null"'>
+        <h1>GDPR</h1>
+        <p>{{ name }}</p>
+        <h2>not you?</h2>
+        <button (click)="clearAll()">Erease Me!</button>
+    </div>
+</div>
 
-<p>
-    User story: new visitor
-    Browser loads web page for the first time.
-</p>
 
-<p>
-    App: Howdy, stranger. Haven't seen your face around here before. What's your name?
-</p>
+<div id="drinkMeny" class="selectDrink" *ngIf='name !== "null null"'>
+    <app-selectbeverage (drinkaDrink)="whatToDrink($event)"></app-selectbeverage>
+    <div>
 
-<p>
+    </div>
+</div>
 
-    User: "enters name "Clive Westforest">"
-</p> 
-    
-<p>
-    App: Alright Mr. Westforest, what can I do you for?
-</p>
-<p>
-    User: "selects a beverage>
-</p>
-
-<p>
-    App: One "chosen beverage>, coming right up!
-</p>
-
-<p>
-    User story: returning visitor
-    Browser loads web page (not the first time)
-</p>
-
-<p>
-    App: Hello again, Mr. Westforest! The usual?
-    App presents a new button: "The usual". The user can still select another beverage from the menu.
-</p>
-
-<p>
-    User: "selects the usual or another beverage>
-</p>
-    
-<p>
-    App: One "chosen beverage>, coming right up!
-</p>
-    
-<p>
-    User story: right to be forgotten
-    Available at all times, to all users
-    A button is displayed on the page that the visitor can click on to clear his/her information.
-</p>
-
-<p>
-    User: "I was never here"
-</p>
-    
-<p>
-    App: Got it. Who are you again?
-</p>
 

@@ -1,1 +1,8 @@
-<p>theusual works!</p>
+<p *ngIf=' sameDrink !== null; else ChoseDrink'>
+    As usual? {{ sameDrink }}
+    <button (click)='sameSame()'>The usual!</button>
+    
+</p>
+<ng-template  #ChoseDrink>
+    <p *ngIf=' name !== "null null"'>Chose a drink below!</p>
+</ng-template>

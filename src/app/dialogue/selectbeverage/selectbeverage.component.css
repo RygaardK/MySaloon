@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+
+.container {
+    width: 99vw;
+    display: flex;
+    align-self: center;
+}
+.meny {
+    margin: 1rem;
+    padding: 2rem 4rem 2rem 3rem;
+    background-color: #edb879;
+    
+    width: min-content;
+    height: min-content;
+
+    border-radius: 5px;
+    box-shadow: 5px 6px #88888840;
+}
+
+.meny h2 {
+    text-decoration: underline;
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 4rem;
+    text-shadow: 5px 6px #88888840;
+}
