@@ -17,28 +17,33 @@ export class DialogueComponent implements OnInit {
   public name = "";
   public displayGDPR = false;
   public displayFormInput = false;
+  public displayTheUsual = false;
+  public displaySelectBeverage = false;
   public theMessage = "";
+  public drinkMessage = "";
 
 
   constructor(private _UserstorageinfoService: UserstorageinfoService ) { }
 
   logName(fname, lname){
-    console.log('(DIALOGUE)logName: ', fname, lname)
+    console.log('(DIALOGUE) logName: ', fname, lname)
     this.theMessage = "Alright " + fname + " " + lname + ", what can I do you for?";
     this.name = fname + " " + lname;
     this._UserstorageinfoService.logName(fname, lname);
+    this.displaySelectBeverage = true;
     this.displayFormInput = false;
     this.displayGDPR = true;
   }  
 
   clearAll(){
-    console.log('(DIALOGUE)clearAll: LocalStorage is cleared!');
+    console.log('(DIALOGUE) clearAll: LocalStorage is cleared!');
     this._UserstorageinfoService.clearALL();
     this.ngOnInit()
   }
 
   whatToDrink($event) {
-    console.log('(DIALOGUE)whatToDrink: ', $event)
+    console.log('(DIALOGUE) whatToDrink: ', $event)
+    this.drinkMessage = "One "+ $event + ", coming right up!"
     this.myDrink = $event
     this._UserstorageinfoService.drinkSelected($event)
   }
@@ -55,8 +60,10 @@ export class DialogueComponent implements OnInit {
   ngOnInit(): void {
    this.name = this._UserstorageinfoService.checkName();
    this.theMessage = this._UserstorageinfoService.getMessage();
-   this.displayFormInput = this._UserstorageinfoService.getDispTU();
+   this.displayFormInput = this._UserstorageinfoService.getDispFI();
    this.displayGDPR = this._UserstorageinfoService.getDispGDPR();
+   this.displayTheUsual = this._UserstorageinfoService.getDispTU();
+   this.displaySelectBeverage = this._UserstorageinfoService.getDispSB();
   }
 
 }

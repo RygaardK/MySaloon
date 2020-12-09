@@ -2,10 +2,12 @@
     <div class="helloDiv">
         <p>
             {{ theMessage }}
+            <br><br>
+            {{ drinkMessage }}
         </p>
         <div *ngIf="displayFormInput">
             <div>
-                <form>
+                <form #myForm="ngForm" (ngSubmit)="logName(fname.value, lname.value)">
                     <div class="form-group">
                         <label for="fname"></label>
                         <input #fname name="fname"  type="text" placeholder="First name">
@@ -14,7 +16,7 @@
                         <label for="lname"></label>
                         <input #lname name="lname"  type="text" placeholder="Last name">
                     </div>   
-                    <button (click)="logName(fname.value, lname.value)" > Enter name!</button>
+                    <button type="submit"> Enter name!</button>
                 </form> 
             </div>
         </div>
@@ -29,11 +31,11 @@
 </div>
 
 
-<div id="sameDrink" class="selectDrink">
+<div id="sameDrink" class="selectDrink" *ngIf="displayTheUsual">
     <app-theusual (drinkaDrink)="whatToDrink($event)" [thedrink]="myDrink"></app-theusual>
 </div>
 
-<div id="drinkMeny" class="selectDrink">
+<div id="drinkMeny" class="selectDrink" *ngIf="displaySelectBeverage">
     <app-selectbeverage (drinkaDrink)="whatToDrink($event)"></app-selectbeverage>
     <div>
 

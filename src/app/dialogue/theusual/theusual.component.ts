@@ -21,9 +21,6 @@ export class TheusualComponent implements OnInit {
 
   ngOnInit(): void {
     this.sameDrink = this._UserstorageinfoService.checkDrink();
-    //console.log(this.sameDrink)
-    this.name = this._UserstorageinfoService.checkName();
-    //console.log(this.name)
   }
 
 }

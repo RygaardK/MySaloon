@@ -17,7 +17,7 @@ export class UserstorageinfoService {
 
   public displayTheUsual = false;
   public displaySelectBeverage = false;
-  public displayFormInput = true;
+  public displayFormInput = false;
   public displayGDPR = false
   public message = "";
 
@@ -31,7 +31,7 @@ export class UserstorageinfoService {
   }
 
   getDispTU() {
-    return this.displayFormInput;
+    return this.displayTheUsual;
   }
   getDispSB() {
     return this.displaySelectBeverage;
@@ -51,6 +51,7 @@ export class UserstorageinfoService {
     this.message = "Alright " + fname + " " + lname + ", what can I do you for?";
     this.displayFormInput = false;
     this.displayGDPR = true;
+    this.displaySelectBeverage = true;
   }
 
   checkName(){
@@ -61,12 +62,18 @@ export class UserstorageinfoService {
     if ( fname === null && lname === null ) {
       this.displaySelectBeverage = false;
       this.displayGDPR = false;
+      this.displayFormInput = true;
       this.message = "Howdy, stranger. Haven't seen your face around here before. What's your name?";
       console.log('Name is NOT set, GDPR & Beverage is set to FALSE ')
     } else {
+      if (this.checkDrink() === null) {
+        this.message = "Hello again " + fname + " " + lname + " Please choose some from the Meny."
+      } else {
+        this.message = "Hello again " + fname + " " + lname + ", The usual?"
+      }
+      this.displayFormInput = false;
       this.displaySelectBeverage = true;
       this.displayGDPR = true;
-      this.message = "Hello again " + fname + " " + lname + ", The usual?"
       console.log('Name is set, GDPR & Beverage is set to TRUE ')
       
     }
@@ -76,9 +83,12 @@ export class UserstorageinfoService {
   checkDrink(){
     let drink = localStorage.getItem('drink');
     console.log('CheckDrink: ', drink)
-    if (drink !== "null") {
+    if (drink !== null) {
       this.displayTheUsual = true;
-      console.log('Name is set, displayTheUsual is set to True ')
+      console.log('Name is set, displayTheUsual is set to TRUE ')
+    } else {
+      this.displayTheUsual = false;
+      console.log('Name is NOT set, displayTheUsual is set to FALSE ')
     }
     return(drink)
   }
@@ -91,7 +101,7 @@ export class UserstorageinfoService {
   
 
   drinkSelected(drink) {
-    console.log('(SERVICE)Drink: ', drink);
+    console.log('(SERVICE) Drink: ', drink);
     localStorage.setItem('drink', drink)
   }
 

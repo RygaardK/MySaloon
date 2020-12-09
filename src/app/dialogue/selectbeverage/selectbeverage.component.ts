@@ -12,6 +12,7 @@ export class SelectbeverageComponent implements OnInit {
 
   public drinks = [];
 
+
  
   @Output() drinkaDrink = new EventEmitter<string>();
 
@@ -24,8 +25,7 @@ export class SelectbeverageComponent implements OnInit {
   }
 
   drinkSelected($event) {
-    //console.log($event)
-    //this._UserstorageinfoService.drinkSelected($event)
+    console.log($event)
     this.drinkaDrink.emit($event);
   }
 }    
