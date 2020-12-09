@@ -8,27 +8,27 @@ import { UserstorageinfoService } from './../userstorageinfo.service'
 })
 export class DialogueComponent implements OnInit {
 
-
-
-
   public isDisabled = true;
   public isLoggedIn = false;
   public hasError = false;
   public isSpecial = false;
+  public diaState = "";
   public myDrink = "";
   public name = "";
-  public messageClasses = {
-    "text-isDisabled": !this.isDisabled,
-    "text-isLoggedIn": !this.isLoggedIn,
-    "text-hasError": !this.hasError,
-    "text-isSpecial": !this.isSpecial,
-  }
+  public displayGDPR = false;
+  public displayFormInput = false;
+  public theMessage = "";
+
+
   constructor(private _UserstorageinfoService: UserstorageinfoService ) { }
 
   logName(fname, lname){
     console.log('(DIALOGUE)logName: ', fname, lname)
-    this.name = fname+' '+lname;
+    this.theMessage = "Alright " + fname + " " + lname + ", what can I do you for?";
+    this.name = fname + " " + lname;
     this._UserstorageinfoService.logName(fname, lname);
+    this.displayFormInput = false;
+    this.displayGDPR = true;
   }  
 
   clearAll(){
@@ -54,6 +54,9 @@ export class DialogueComponent implements OnInit {
 
   ngOnInit(): void {
    this.name = this._UserstorageinfoService.checkName();
+   this.theMessage = this._UserstorageinfoService.getMessage();
+   this.displayFormInput = this._UserstorageinfoService.getDispTU();
+   this.displayGDPR = this._UserstorageinfoService.getDispGDPR();
   }
 
 }

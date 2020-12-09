@@ -1,24 +1,9 @@
 <div class="container">
     <div class="helloDiv">
-        <p *ngIf=' name !== "null null"; then thenBlock else HelloBlock'>
-            Hello again, {{ name }} The usual?
+        <p>
+            {{ theMessage }}
         </p>
-        
-        <ng-template #thenBlock>
-            <p>
-                Hello again, {{ name }} The usual?
-            </p>
-            <div id="sameDrink" class="selectDrink">
-                <app-theusual (drinkaDrink)="whatToDrink($event)" [thedrink]="myDrink"></app-theusual>
-            </div>
-        </ng-template>
-
-        <ng-template  #HelloBlock>
-            
-            <p>
-                Howdy, stranger. Haven't seen your face around here before. What's your name?
-            </p>
-
+        <div *ngIf="displayFormInput">
             <div>
                 <form>
                     <div class="form-group">
@@ -29,18 +14,13 @@
                         <label for="lname"></label>
                         <input #lname name="lname"  type="text" placeholder="Last name">
                     </div>   
+                    <button (click)="logName(fname.value, lname.value)" > Enter name!</button>
                 </form> 
             </div>
-        
-        <button (click)="logName(fname.value, lname.value)" > Enter name!</button><br><br>
-        
-        </ng-template>
-        <p *ngIf=' myDrink !== ""'>
-            One {{ myDrink }}, coming right up!
-        </p>
+        </div>
     </div>
 
-    <div class="clearDiv"  *ngIf='name !== "null null"'>
+    <div class="clearDiv" *ngIf="displayGDPR">
         <h1>GDPR</h1>
         <p>{{ name }}</p>
         <h2>not you?</h2>
@@ -49,7 +29,11 @@
 </div>
 
 
-<div id="drinkMeny" class="selectDrink" *ngIf='name !== "null null"'>
+<div id="sameDrink" class="selectDrink">
+    <app-theusual (drinkaDrink)="whatToDrink($event)" [thedrink]="myDrink"></app-theusual>
+</div>
+
+<div id="drinkMeny" class="selectDrink">
     <app-selectbeverage (drinkaDrink)="whatToDrink($event)"></app-selectbeverage>
     <div>
 
